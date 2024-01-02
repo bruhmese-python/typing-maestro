@@ -1,0 +1,85 @@
+.container {  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  font-variant-ligatures: no-common-ligatures;
+  font-family: monospace;
+  font-weight: bolder;
+  font-size: 3vh;
+  /*
+   grid-template-rows: 0.5fr 1fr 1fr;
+   * */
+  grid-template-rows: 20% auto 20%;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header"
+    "typing-text"
+    "addtnl-controls";
+}
+
+transition_timing = 1s;
+.anim-fade-in { animation: fadeIn transition_timing ease 0s 1 normal forwards; }
+.anim-fade-out {animation: fadeOut transition_timing ease 0s 1 normal forwards;}
+
+.typing-text { grid-area: typing-text; }
+
+.addtnl-controls { grid-area: addtnl-controls; }
+
+.v-stretch {height:100vh;}
+
+first_color = #222831; 
+.fg_first {color:first_color;}
+.bg_first {background-color:first_color;}
+
+second_color = #393e46;
+.fg_second {color:second_color;}
+.bg_second {background-color:second_color;}
+
+third_color = #f96d00;
+.fg_third {color:third_color;}
+.bg_third {background-color:third_color;}
+
+fourth_color = #f2f2f2;
+.fg_fourth {color:fourth_color;}
+.bg_fourth {background-color:fourth_color;}
+
+.bg_first alias .bg-doc;
+.bg_second alias .bg-type;
+.fg_fourth alias .fg-type;
+.fg_third alias .fg-colored;
+
+.constrain-height{
+	max-height: 30vh;
+	overflow:scroll;
+}
+
+.type-area extends .bg-type {
+	padding:10vh 10vw ;
+	border-radius:10px;
+}
+.results;
+
+.center {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+
+
+.timer extends .center .fg-colored{}
+
+.footer-style extends .center .fg_second{
+	font-size: 2vh;
+}
+
+.reload-btn{
+	display: flex;
+	justify-content: center;
+}
+
+a {
+  color: second_color; /* blue colors for links too */
+  text-decoration: none; /* no underline */
+}
+
+.hidden{ display:none; }
