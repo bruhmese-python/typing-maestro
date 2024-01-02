@@ -1,1 +1,3 @@
 *.vim
+*.snippets
+*.bash_history
