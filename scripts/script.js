@@ -34,8 +34,11 @@ async function fetchAndExtractText() {
     const response = await fetch('https://cors-anywhere.herokuapp.com/https://lipsum.com/feed/json');
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch data. Status: ${response.status}`);
-	typearea.innerHTML = "⚠︎ Failed to fetch data";
+	if (confirm("Redirecting to permissions page")) 
+		window.open("https://cors-anywhere.herokuapp.com/corsdemo","_blank");
+	else{
+		throw new Error(`Failed to fetch data. Status: ${response.status}`);
+	}
     }
 
     const data = await response.json();
@@ -45,15 +48,16 @@ async function fetchAndExtractText() {
 
   } catch (error) {
     console.error('Error:', error.message);
+    typearea.innerHTML = "⚠︎ Failed to fetch data";
   }
 }
-
-fetchAndExtractText();
 
 document.addEventListener('DOMContentLoaded', function() {
 	typearea = document.getElementsByClassName('type-area')[TYPING_TEXT];
 	statarea = document.getElementsByClassName('type-area')[STATS];
         timerElement = document.getElementById('timer-text');
+
+	fetchAndExtractText();
 });
 
 function getWPM(){
@@ -74,6 +78,15 @@ function endSession(){
 	});
 
 }
+
+function startTimer() {
+    startTime = new Date().getTime() + 60 * 1000;
+}
+
+window.onkeydown = function(e) {
+    return e.keyCode !== 32 && e.key !== " ";
+}
+
 
 var x = setInterval(function() {
 
@@ -98,14 +111,6 @@ var x = setInterval(function() {
 	endSession();
   }
 }, 1000);
-
-function startTimer() {
-    startTime = new Date().getTime() + 60 * 1000;
-}
-
-window.onkeydown = function(e) {
-    return e.keyCode !== 32 && e.key !== " ";
-}
 
 document.addEventListener('keydown', function(event) {
 	if (timerEnded != true){
