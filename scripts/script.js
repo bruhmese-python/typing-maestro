@@ -47,7 +47,7 @@ async function fetchAndExtractText() {
     updateTypeArea();
 
   } catch (error) {
-    console.error('Error:', error.message);
+    //console.error('Error:', error.message);
     typearea.innerHTML = "⚠︎ Failed to fetch data";
   }
 }
@@ -92,7 +92,7 @@ var x = setInterval(function() {
 
   var now = new Date().getTime();
   var distance = startTime - now;
-	console.log(distance);
+	//console.log(distance);
 
 
   // Calculate minutes and seconds
@@ -117,16 +117,16 @@ document.addEventListener('keydown', function(event) {
 		let chSpan = typearea.children[chars];
 		if(chSpan !== undefined){
 			let nextChar = chSpan.innerHTML;
-			console.log('nextChar[',chars,']', nextChar);
+			//console.log('nextChar[',chars,']', nextChar);
 			if (event.key !== undefined && event.key === nextChar) {
 				if(chars==0){
 					startTimer();
 				}
-				console.log('Correct key pressed:', event.key);
+				//console.log('Correct key pressed:', event.key);
 				chSpan.classList.add('fg-colored');
 				chars+=1;
 			} else {
-				console.log('Incorrect key pressed:', event.key);
+				//console.log('Incorrect key pressed:', event.key);
 			}
 		}else{
 			timerEnded = true;
