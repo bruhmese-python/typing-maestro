@@ -35,6 +35,7 @@ async function fetchAndExtractText() {
 
     if (!response.ok) {
 	if (confirm("Redirecting to permissions page")) 
+		typearea.innerHTML = "Please reload the page";
 		window.open("https://cors-anywhere.herokuapp.com/corsdemo","_blank");
 	else{
 		throw new Error(`Failed to fetch data. Status: ${response.status}`);
