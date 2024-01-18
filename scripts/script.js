@@ -34,10 +34,10 @@ async function fetchAndExtractText() {
     const response = await fetch('https://cors-anywhere.herokuapp.com/https://lipsum.com/feed/json');
 
     if (!response.ok) {
-	if (confirm("Redirecting to permissions page")) 
+	if (confirm("Redirecting to permissions page")) {
 		typearea.innerHTML = "Please reload the page";
 		window.open("https://cors-anywhere.herokuapp.com/corsdemo","_blank");
-	else{
+	}else{
 		throw new Error(`Failed to fetch data. Status: ${response.status}`);
 	}
     }
